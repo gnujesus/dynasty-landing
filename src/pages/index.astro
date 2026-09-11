@@ -1,11 +1,124 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero";
+import VehicleBrands from "../components/VehicleBrands";
+import AboutUs from "../components/AboutUs.astro";
+import Services from "../components/Services.astro";
+import InstagramShowcase from "../components/InstagramShowcase";
+import Footer from "../components/Footer.astro";
+import { getAllParts } from "../lib/db";
+import { getInstagramImages } from "../lib/ig";
+import { ArrowRight, MessageSquare, Database, ShieldCheck, CheckCircle2 } from "lucide-react";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Fetch sample parts for quick preview banner
+const allParts = await getAllParts();
+const featuredParts = allParts.slice(0, 4);
+
+// Fetch dynamic Instagram / workshop project images
+const igImages = getInstagramImages();
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Dynasty Workshop | Reparaciones de Precisión & Repuestos Automotrices"
+  description="Líderes en servicio automotriz para vehículos japoneses, americanos y europeos en República Dominicana. Desabolladura al horno, mecánica especializada y catálogo en vivo."
+>
+  <Navbar />
+
+  <main class="w-full bg-[#0a0a0c] overflow-hidden pt-[102px]">
+    <!-- Section 1: Cinematic 16:9 Hero with 4-second animated logo reveal and text split -->
+    <Hero client:load />
+
+    <!-- Section 2: Interactive Brands Section (Replicating User Image in Company Colors) -->
+    <VehicleBrands client:visible />
+
+    <!-- Section 3: Instagram / Proyectos 3D Carousel (Réplica exacta de imagen con scroll de mouse) -->
+    {igImages.length > 0 && (
+      <InstagramShowcase client:visible images={igImages} />
+    )}
+
+    <!-- Section 4: About Us (Compromiso de la Empresa: Japoneses, Americanos, Europeos) -->
+    <AboutUs />
+
+    <!-- Section 5: Services (Square Cards: Desabolladuras, Piezas, Accesorios, Ofertas...) -->
+    <Services />
+
+    <!-- Section 5: Catalog Quick Teaser Banner -->
+    <section class="relative w-full bg-[#0f0f13] py-20 px-6 md:px-12 lg:px-20 border-b border-white/10 select-none">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 pb-12 border-b border-white/10">
+          <div>
+            <div class="inline-flex items-center gap-2 mb-2">
+              <Database className="w-4 h-4 text-[#c7a12b]" />
+              <span class="text-xs font-mono tracking-[0.25em] text-[#c7a12b] uppercase font-bold">
+                INVENTARIO EN LÍNEA // SUPABASE
+              </span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight font-sans">
+              EXPLORA EL <span class="text-[#c7a12b]">CATÁLOGO</span> COMPLETO
+            </h2>
+            <p class="text-sm text-neutral-400 font-medium max-w-xl mt-2 leading-relaxed">
+              Filtra por vehículo, año y número OE. Contamos con repuestos listos para despacho inmediato y cotización directa por WhatsApp.
+            </p>
+          </div>
+
+          <a
+            href="/catalog"
+            class="btn-squared inline-flex items-center gap-3 px-8 py-4 bg-[#c7a12b] hover:bg-[#dfb93e] text-black font-mono font-black text-xs tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(199,161,43,0.35)]"
+          >
+            <span>VER CATÁLOGO COMPLETO</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        <!-- Mini Grid of Featured Parts -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-10">
+          {featuredParts.map((part) => (
+            <div class="bg-[#141418] border border-white/10 p-5 card-squared flex flex-col justify-between group hover:border-[#c7a12b] transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-[10px] font-mono text-[#c7a12b] font-bold bg-[#c7a12b]/15 px-2 py-0.5 border border-[#c7a12b]/30">
+                    {part.quality || "OE SUPPLIER"}
+                  </span>
+                  <span class="text-[11px] font-mono text-emerald-400 font-bold">
+                    EN STOCK
+                  </span>
+                </div>
+
+                <h3 class="text-sm font-bold text-white group-hover:text-[#c7a12b] transition-colors mb-1 line-clamp-2">
+                  {part.name}
+                </h3>
+
+                <div class="text-[11px] font-mono text-neutral-400 mb-3">
+                  SKU: <span class="text-white">{part.sku}</span>
+                  {part.brand && <span> • {part.brand}</span>}
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono text-neutral-500 block">PRECIO</span>
+                  <span class="text-sm font-extrabold text-white font-mono">
+                    RD$ {part.price.toLocaleString()}
+                  </span>
+                </div>
+
+                <a
+                  href={`https://wa.me/18294627157?text=${encodeURIComponent(`Hola Dynasty Workshop, deseo consultar sobre la pieza: ${part.name} (SKU: ${part.sku}).`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-squared p-2 bg-[#1b1b20] hover:bg-[#c7a12b] text-neutral-300 hover:text-black border border-white/10 transition-colors"
+                  title="Consultar por WhatsApp"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>

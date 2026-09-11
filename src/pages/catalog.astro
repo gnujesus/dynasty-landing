@@ -1,0 +1,104 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CatalogTable from "../components/CatalogTable";
+import Footer from "../components/Footer.astro";
+import { getAllParts } from "../lib/db";
+import { ArrowLeft, MessageSquare, ShieldCheck, Database } from "lucide-react";
+
+// Fetch parts directly from Supabase PostgreSQL database
+const parts = await getAllParts();
+
+// Support query parameter ?make=...
+const url = new URL(Astro.request.url);
+const initialMake = url.searchParams.get("make") || "";
+---
+
+<Layout
+  title="Catálogo de Repuestos Automotrices | Dynasty Workshop"
+  description="Explora nuestro catálogo en vivo de piezas y repuestos certificados para vehículos BMW, Mercedes, Toyota, Ford, Honda y más. Compra directa vía WhatsApp."
+>
+  <!-- Dedicated Catalog Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0c0c0e]/95 backdrop-blur-xl border-b border-white/10 select-none">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-4">
+      <!-- Left: Logo & Back to Home Button Required -->
+      <div class="flex items-center gap-4 md:gap-6">
+        <a
+          href="/"
+          class="btn-squared inline-flex items-center gap-2 px-4 py-2.5 bg-[#18181c] hover:bg-[#c7a12b] text-neutral-300 hover:text-black border border-white/15 hover:border-[#c7a12b] font-mono text-xs tracking-wider uppercase transition-all"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span class="hidden sm:inline">VOLVER AL INICIO</span>
+          <span class="sm:hidden">INICIO</span>
+        </a>
+
+        <a href="/" class="flex items-center gap-3">
+          <img
+            src="/assets/dynasty-logo.png"
+            alt="Dynasty Workshop"
+            class="w-9 h-9 object-contain"
+          />
+          <div class="hidden md:flex flex-col">
+            <span class="font-black text-sm tracking-wider uppercase font-sans text-white leading-none">
+              DYNASTY <span class="text-[#c7a12b]">WORKSHOP</span>
+            </span>
+            <span class="font-mono text-[9px] tracking-[0.2em] text-[#c7a12b] uppercase mt-0.5">
+              CATÁLOGO DE REPUESTOS
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right: Direct WhatsApp Contact -->
+      <div class="flex items-center gap-3">
+        <a
+          href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20tengo%20una%20consulta%20sobre%20su%20cat%C3%A1logo%20de%20piezas."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-squared inline-flex items-center gap-2 px-4 md:px-5 py-2.5 bg-[#c7a12b] hover:bg-[#dfb93e] text-black font-mono font-bold text-xs tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(199,161,43,0.3)]"
+        >
+          <MessageSquare className="w-3.5 h-3.5" />
+          <span class="hidden sm:inline">CONSULTA WHATSAPP: +1 (829) 462-7157</span>
+          <span class="sm:hidden">WHATSAPP</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full min-h-screen bg-[#0a0a0c] pt-28 pb-20 px-4 md:px-12 lg:px-20 select-none">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <!-- Section Intro Banner -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
+        <div>
+          <div class="inline-flex items-center gap-2 mb-2">
+            <Database className="w-4 h-4 text-[#c7a12b]" />
+            <span class="text-xs font-mono tracking-[0.25em] text-[#c7a12b] uppercase font-bold">
+              INVENTARIO EN VIVO // SUPABASE DATABASE
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight font-sans">
+            CATÁLOGO DE <span class="text-[#c7a12b]">REPUESTOS</span>
+          </h1>
+          <p class="text-sm text-neutral-400 font-medium max-w-2xl mt-2 leading-relaxed">
+            Piezas originales y certificadas OE Supplier para vehículos japoneses, americanos y europeos. Búsqueda por número OE, SKU, marca, modelo o año con cotización instantánea a WhatsApp.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 text-xs font-mono text-neutral-400">
+          <div class="flex items-center gap-2 bg-[#131316] border border-white/10 px-3.5 py-2 card-squared">
+            <ShieldCheck className="w-4 h-4 text-[#c7a12b]" />
+            <span>CALIDAD CERTIFICADA</span>
+          </div>
+          <div class="flex items-center gap-2 bg-[#131316] border border-white/10 px-3.5 py-2 card-squared">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>STOCK EN TIEMPO REAL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Interactive Catalog Table Component -->
+      <CatalogTable client:load initialParts={parts} initialMake={initialMake} />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

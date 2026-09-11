@@ -1,0 +1,123 @@
+---
+import { Sparkles, ShoppingBag, Gauge, Tag, Laptop, Wrench, ArrowRight, MessageSquare } from "lucide-react";
+
+const services = [
+  {
+    id: "desabolladuras",
+    title: "Desabolladura & Pintura al Horno",
+    badge: "CARROCERÍA PREMIUM",
+    desc: "Horno presurizado de pintura automotriz, laboratorio de colorimetría digital y desabolladura artesanal sin perder la línea de fábrica ni la garantía anticorrosiva.",
+    highlight: "Garantía de color y brillo espejo por 3 años",
+    waMsg: "Hola Dynasty Workshop, deseo cotizar el servicio de Desabolladura y Pintura para mi vehículo."
+  },
+  {
+    id: "piezas",
+    title: "Venta de Piezas & Repuestos",
+    badge: "INVENTARIO ACTIVO",
+    desc: "Venta directa de repuestos genuinos y OE Supplier para vehículos japoneses, americanos y europeos. Filtros, frenos, suspensión, sensores y piezas de motor con despacho inmediato.",
+    highlight: "Disponibilidad garantizada y envíos a todo el país",
+    waMsg: "Hola Dynasty Workshop, estoy buscando repuestos y piezas para mi vehículo. ¿Podrían orientarme?"
+  },
+  {
+    id: "accesorios",
+    title: "Accesorios & Performance",
+    badge: "CUSTOM & ESTILO",
+    desc: "Instalación de iluminación LED/Láser, rines deportivos, sistemas de escape de alto flujo, protecciones cerámicas, bodykits e interiores personalizados.",
+    highlight: "Instalación profesional certificada sin alterar cableado original",
+    waMsg: "Hola Dynasty Workshop, quiero cotizar accesorios y mejoras de rendimiento para mi auto."
+  },
+  {
+    id: "ofertas",
+    title: "Ofertas & Mantenimiento Preventivo",
+    badge: "COMBOS DE TEMPORADA",
+    desc: "Paquetes especiales de cambio de aceite sintético con filtro MANN/OE, alineación, balanceo computarizado, inspección de 50 puntos críticos y diagnóstico preventivo.",
+    highlight: "Paquetes de mantenimiento desde RD$ 3,800",
+    waMsg: "Hola Dynasty Workshop, me interesa conocer sus Ofertas de Mantenimiento Preventivo vigentes."
+  },
+  {
+    id: "diagnostico",
+    title: "Diagnóstico Computarizado",
+    badge: "SCANNER CONCESIONARIO",
+    desc: "Software especializado ISTA (BMW), Xentry (Mercedes), Techstream (Toyota) y FDRS (Ford). Detección exacta de fallas electrónicas, calibración de sensores ADAS y módulos.",
+    highlight: "Diagnóstico preciso sin adivinanzas ni reemplazos innecesarios",
+    waMsg: "Hola Dynasty Workshop, requiero un Diagnóstico Computarizado para mi vehículo."
+  },
+  {
+    id: "mecanica",
+    title: "Mecánica General & Reconstrucción",
+    badge: "ALTA PRECISIÓN",
+    desc: "Reparación y reconstrucción de motores, transmisiones automáticas y CVT, sistemas de inyección directa GDI/TSI y suspensión neumática con tolerancias de fábrica.",
+    highlight: "Mano de obra altamente calificada con herramental especializado",
+    waMsg: "Hola Dynasty Workshop, necesito cotizar un servicio de Mecánica Especializada."
+  }
+];
+---
+
+<section id="servicios" class="relative w-full bg-[#0a0a0c] py-24 px-6 md:px-12 lg:px-20 border-b border-white/10 select-none">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-16 border-b border-white/10">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-2.5 h-2.5 bg-[#c7a12b]"></span>
+          <span class="text-xs font-mono tracking-[0.25em] text-[#c7a12b] uppercase font-bold">
+            SOLUCIONES INTEGRALES
+          </span>
+        </div>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight font-sans">
+          NUESTROS <span class="text-[#c7a12b]">SERVICIOS</span>
+        </h2>
+      </div>
+
+      <div class="max-w-md text-sm text-neutral-400 font-medium">
+        Desde desabolladuras estéticas de concurso hasta reconstrucción de tren motriz y despacho de repuestos certificados en República Dominicana.
+      </div>
+    </div>
+
+    <!-- Square Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-12">
+      {services.map((item, idx) => (
+        <div class="card-squared relative bg-[#121215] border border-white/10 hover:border-[#c7a12b] p-8 flex flex-col justify-between transition-all duration-300 group hover:shadow-[0_10px_30px_rgba(199,161,43,0.12)]">
+          <!-- Top Tag & Index -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-mono tracking-widest text-[#c7a12b] font-bold uppercase bg-[#c7a12b]/10 px-2.5 py-1 border border-[#c7a12b]/30">
+                {item.badge}
+              </span>
+              <span class="font-mono text-xs text-neutral-600 font-bold">
+                0{idx + 1}
+              </span>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-black text-white uppercase mb-4 group-hover:text-[#c7a12b] transition-colors font-sans">
+              {item.title}
+            </h3>
+
+            <p class="text-sm text-neutral-400 font-medium leading-relaxed mb-6">
+              {item.desc}
+            </p>
+          </div>
+
+          <!-- Bottom Feature & Button -->
+          <div class="border-t border-white/10 pt-5 mt-4">
+            <div class="text-xs font-mono text-neutral-300 mb-5 flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-[#c7a12b] flex-shrink-0"></span>
+              <span>{item.highlight}</span>
+            </div>
+
+            <a
+              href={`https://wa.me/18294627157?text=${encodeURIComponent(item.waMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-squared w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#18181c] hover:bg-[#c7a12b] text-white hover:text-black font-mono font-bold text-xs tracking-widest uppercase transition-all duration-200 border border-white/15 hover:border-[#c7a12b]"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-[#c7a12b] group-hover:text-black" />
+              <span>COTIZAR POR WHATSAPP</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

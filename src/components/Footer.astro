@@ -1,0 +1,227 @@
+---
+import { Mail, Phone, MapPin, Clock, ShieldCheck, ArrowRight, MessageSquare, Link2 } from "lucide-react";
+import { WhatsAppIcon, InstagramIcon, LinktreeIcon } from "./SocialIcons";
+---
+
+<footer id="contacto" class="relative w-full bg-[#08080a] border-t border-white/10 text-white pt-20 pb-12 px-6 md:px-12 lg:px-20 select-none">
+  <div class="max-w-7xl mx-auto">
+    <!-- Top Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+      <!-- Brand & Identity -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <img
+            src="/assets/dynasty-logo.png"
+            alt="Dynasty Workshop Logo"
+            class="w-11 h-11 object-contain filter drop-shadow-[0_2px_10px_rgba(199,161,43,0.4)]"
+          />
+          <div>
+            <span class="block font-black text-lg tracking-wider uppercase font-sans text-white">
+              DYNASTY <span class="text-[#c7a12b]">WORKSHOP</span>
+            </span>
+            <span class="block font-mono text-[10px] tracking-[0.2em] text-[#c7a12b] uppercase">
+              HIGH PRECISION AUTOMOTIVE
+            </span>
+          </div>
+        </div>
+
+        <p class="text-xs text-neutral-400 leading-relaxed font-medium">
+          Reparaciones de alto estándar, desabolladura y pintura al horno, y venta de repuestos certificados para vehículos japoneses, americanos y europeos en República Dominicana.
+        </p>
+
+        <!-- Social & Contact Icons Required -->
+        <div class="flex items-center gap-3 pt-2">
+          <!-- WhatsApp Icon -->
+          <a
+            href="https://wa.me/18294627157"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-squared w-9 h-9 bg-[#141418] hover:bg-[#c7a12b] border border-white/15 hover:border-[#c7a12b] text-neutral-300 hover:text-black flex items-center justify-center transition-all duration-150"
+            title="WhatsApp Dynasty"
+            aria-label="WhatsApp"
+          >
+            <WhatsAppIcon className="w-4 h-4" />
+          </a>
+
+          <!-- Instagram Icon -->
+          <a
+            href="https://www.instagram.com/dynasty_autoparts"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-squared w-9 h-9 bg-[#141418] hover:bg-[#c7a12b] border border-white/15 hover:border-[#c7a12b] text-neutral-300 hover:text-black flex items-center justify-center transition-all duration-150"
+            title="Instagram Dynasty Auto Parts (@dynasty_autoparts)"
+            aria-label="Instagram"
+          >
+            <InstagramIcon className="w-4 h-4" />
+          </a>
+
+          <!-- Linktree Icon -->
+          <a
+            href="https://linktr.ee/carspartssolutions"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-squared w-9 h-9 bg-[#141418] hover:bg-[#c7a12b] border border-white/15 hover:border-[#c7a12b] text-neutral-300 hover:text-black flex items-center justify-center transition-all duration-150"
+            title="Linktree Cars Parts Solutions"
+            aria-label="Linktree"
+          >
+            <LinktreeIcon className="w-4 h-4" />
+          </a>
+
+          <!-- Mail Icon -->
+          <a
+            href="mailto:admin@dynasty.do"
+            class="btn-squared w-9 h-9 bg-[#141418] hover:bg-[#c7a12b] border border-white/15 hover:border-[#c7a12b] text-neutral-300 hover:text-black flex items-center justify-center transition-all duration-150"
+            title="Correo Electrónico"
+            aria-label="Email"
+          >
+            <Mail className="w-4 h-4" />
+          </a>
+
+          <!-- Phone Icon -->
+          <a
+            href="tel:+18294627157"
+            class="btn-squared w-9 h-9 bg-[#141418] hover:bg-[#c7a12b] border border-white/15 hover:border-[#c7a12b] text-neutral-300 hover:text-black flex items-center justify-center transition-all duration-150"
+            title="Llamada Telefónica"
+            aria-label="Phone"
+          >
+            <Phone className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div>
+        <h4 class="text-xs font-mono tracking-[0.2em] text-[#c7a12b] font-bold uppercase mb-4">
+          NAVEGACIÓN RÁPIDA
+        </h4>
+        <ul class="space-y-2.5 text-xs font-mono">
+          <li>
+            <a href="/" class="text-neutral-400 hover:text-white transition-colors">
+              Inicio / Hero
+            </a>
+          </li>
+          <li>
+            <a href="/catalog" class="text-[#c7a12b] hover:text-[#dfb93e] font-bold transition-colors">
+              Catálogo de Repuestos
+            </a>
+          </li>
+          <li>
+            <a href="/#nosotros" class="text-neutral-400 hover:text-white transition-colors">
+              Compromiso de la Empresa
+            </a>
+          </li>
+          <li>
+            <a href="/#marcas" class="text-neutral-400 hover:text-white transition-colors">
+              Marcas & Linaje
+            </a>
+          </li>
+          <li>
+            <a href="/#servicios" class="text-neutral-400 hover:text-white transition-colors">
+              Servicios Especializados
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xs font-mono tracking-[0.2em] text-[#c7a12b] font-bold uppercase mb-4">
+          CONTACTO & ATENCIÓN
+        </h4>
+        <div class="space-y-3 text-xs font-mono text-neutral-400">
+          <div class="flex items-start gap-2.5">
+            <Phone className="w-4 h-4 text-[#c7a12b] flex-shrink-0 mt-0.5" />
+            <div>
+              <span class="block text-white font-bold">+1 (829) 462-7157</span>
+              <span class="text-[11px] text-neutral-500">Llamadas y WhatsApp 24/7</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5">
+            <Mail className="w-4 h-4 text-[#c7a12b] flex-shrink-0 mt-0.5" />
+            <div>
+              <span class="block text-white font-bold">admin@dynasty.do</span>
+              <span class="text-[11px] text-neutral-500">Cotizaciones corporativas</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5">
+            <MapPin className="w-4 h-4 text-[#c7a12b] flex-shrink-0 mt-0.5" />
+            <div>
+              <span class="block text-white font-bold">Santo Domingo</span>
+              <span class="text-[11px] text-neutral-500">República Dominicana</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5">
+            <Clock className="w-4 h-4 text-[#c7a12b] flex-shrink-0 mt-0.5" />
+            <div>
+              <span class="block text-white font-bold">Lun - Sáb: 8:00 AM - 6:00 PM</span>
+              <span class="text-[11px] text-neutral-500">Domingos con cita previa</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2.5">
+            <Link2 className="w-4 h-4 text-[#c7a12b] flex-shrink-0 mt-0.5" />
+            <div>
+              <a
+                href="https://linktr.ee/carspartssolutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-white font-bold hover:text-[#c7a12b] transition-colors"
+              >
+                linktr.ee/carspartssolutions
+              </a>
+              <span class="text-[11px] text-neutral-500">Enlaces y redes oficiales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Assistance Box -->
+      <div class="bg-[#121215] border border-white/10 p-6 card-squared flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-mono tracking-widest text-[#c7a12b] uppercase font-bold block mb-2">
+            CONSULTA INMEDIATA
+          </span>
+          <h5 class="text-sm font-bold text-white mb-2">
+            ¿Necesitas una cotización o repuesto urgente?
+          </h5>
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Escríbenos directamente y nuestro equipo técnico te atenderá al instante.
+          </p>
+        </div>
+
+        <a
+          href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20necesito%20asistencia%20inmediata%20con%20mi%20veh%C3%ADculo."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-squared w-full inline-flex items-center justify-center gap-2 py-3 bg-[#c7a12b] hover:bg-[#dfb93e] text-black font-mono font-bold text-xs tracking-wider uppercase transition-all shadow-md"
+        >
+          <MessageSquare className="w-3.5 h-3.5" />
+          <span>CONTACTAR VÍA WHATSAPP</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Disclaimers & Legal Requirements -->
+    <div class="pt-8 text-neutral-500 text-[11px] leading-relaxed font-sans space-y-3">
+      <p>
+        <strong>Descargo de responsabilidad (Disclaimer):</strong> Dynasty Workshop es un taller mecánico y distribuidor de repuestos automotrices independiente con sede en la República Dominicana. Los nombres comerciales, marcas registradas, insignias y logotipos de fabricantes (incluyendo, entre otros, BMW, Mercedes-Benz, Toyota, Honda, Ford, Lincoln, Porsche, Audi, Chevrolet y sus filiales) son propiedad exclusiva de sus respectivos titulares. Su mención en este sitio web tiene propósitos meramente informativos, descriptivos y de referencia técnica para indicar la compatibilidad y aplicación de repuestos y servicios automotrices, de conformidad con los principios del uso legítimo de marcas (nominative fair use). Dynasty Workshop no es un concesionario oficial ni filial de dichas marcas salvo que se especifique expresamente.
+      </p>
+
+      <div class="flex flex-col md:flex-row items-center justify-between pt-4 border-t border-white/5 font-mono text-[10px] text-neutral-400">
+        <div>
+          © 2026 Dynasty Workshop. Todos los derechos reservados.
+        </div>
+        <div class="flex items-center gap-4 mt-2 md:mt-0">
+          <span>TÉRMINOS Y CONDICIONES</span>
+          <span>•</span>
+          <span>POLÍTICA DE PRIVACIDAD</span>
+          <span>•</span>
+          <span>GARANTÍA DE PIEZAS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

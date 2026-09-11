@@ -1,0 +1,99 @@
+---
+import { MessageSquare, ArrowRight, Phone } from "lucide-react";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 select-none">
+  <!-- 1. Mini Navbar encima del Navbar Principal -->
+  <div class="w-full bg-[#08080a] border-b border-white/10 text-[11px] font-mono text-neutral-400">
+    <div class="max-w-7xl mx-auto px-4 md:px-12 h-9 flex items-center justify-between">
+      <!-- Left Info -->
+      <div class="flex items-center gap-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#c7a12b] animate-pulse"></span>
+        <span class="text-neutral-300 font-semibold uppercase tracking-wider text-[10px] md:text-[11px]">
+          DYNASTY WORKSHOP // REPUESTOS & PRECISIÓN
+        </span>
+        <span class="hidden md:inline text-white/20">|</span>
+        <span class="hidden md:inline text-neutral-400 text-[10px]">
+          SANTO DOMINGO, RD
+        </span>
+      </div>
+
+      <!-- Right: Botones de Contacto y Catálogo requeridos en el mini navbar -->
+      <div class="flex items-center gap-4">
+        <!-- Botón Contacto -->
+        <a
+          href="/#contacto"
+          class="hover:text-[#c7a12b] flex items-center gap-1.5 transition-colors uppercase tracking-wider text-[10px] md:text-[11px] font-semibold"
+        >
+          <Phone className="w-3 h-3 text-[#c7a12b]" />
+          <span>CONTACTO: +1 (829) 462-7157</span>
+        </a>
+
+        <span class="text-white/20">|</span>
+
+        <!-- Botón Catálogo -->
+        <a
+          href="/catalog"
+          class="btn-squared inline-flex items-center gap-1 px-2.5 py-1 bg-[#c7a12b] hover:bg-[#dfb93e] text-black font-bold uppercase tracking-wider text-[10px] transition-all shadow-[0_0_10px_rgba(199,161,43,0.25)]"
+        >
+          <span>CATÁLOGO</span>
+          <ArrowRight className="w-3 h-3" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Navbar Principal (Secciones limpias y desaturadas) -->
+  <div class="w-full bg-black/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 md:px-12 h-16 md:h-17 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <img
+          src="/assets/dynasty-logo.png"
+          alt="Dynasty Workshop Logo"
+          class="w-9 h-9 object-contain filter drop-shadow-[0_2px_8px_rgba(199,161,43,0.4)] group-hover:scale-105 transition-transform"
+        />
+        <div class="flex flex-col">
+          <span class="font-black text-sm md:text-base tracking-wider uppercase font-sans text-white group-hover:text-[#c7a12b] transition-colors leading-none">
+            DYNASTY <span class="text-[#c7a12b]">WORKSHOP</span>
+          </span>
+          <span class="font-mono text-[9px] tracking-[0.22em] text-neutral-400 uppercase mt-0.5">
+            PRECISION AUTOMOTIVE
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links (Limpias y espaciadas, sin saturación) -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-xs font-mono tracking-widest uppercase">
+        <a href="/" class="text-white hover:text-[#c7a12b] transition-colors font-bold">
+          INICIO
+        </a>
+        <a href="/#marcas" class="text-neutral-400 hover:text-white transition-colors">
+          MARCAS
+        </a>
+        <a href="/#proyectos" class="text-neutral-400 hover:text-white transition-colors">
+          PROYECTOS
+        </a>
+        <a href="/#nosotros" class="text-neutral-400 hover:text-white transition-colors">
+          NOSOTROS
+        </a>
+        <a href="/#servicios" class="text-neutral-400 hover:text-white transition-colors">
+          SERVICIOS
+        </a>
+      </nav>
+
+      <!-- Right Action: WhatsApp Directo rápido -->
+      <div class="flex items-center gap-3">
+        <a
+          href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20deseo%20m%C3%A1s%20informaci%C3%B3n."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-squared inline-flex items-center gap-2 px-3.5 py-2 border border-white/15 hover:border-[#c7a12b] text-neutral-200 hover:text-[#c7a12b] bg-white/5 hover:bg-black font-mono text-[11px] tracking-wider uppercase transition-all"
+        >
+          <MessageSquare className="w-3.5 h-3.5 text-[#c7a12b]" />
+          <span>WHATSAPP</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

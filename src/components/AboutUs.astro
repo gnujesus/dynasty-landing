@@ -1,0 +1,130 @@
+---
+import { ShieldCheck, Cpu, Wrench, Trophy, CheckCircle2, ArrowRight } from "lucide-react";
+---
+
+<section id="nosotros" class="relative w-full bg-[#0d0d10] py-24 px-6 md:px-12 lg:px-20 border-b border-white/10 overflow-hidden select-none">
+  <!-- Subtle gold flare background -->
+  <div class="absolute top-0 right-1/4 w-96 h-96 bg-[#c7a12b]/10 blur-[120px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto">
+    <!-- Header / Compromiso -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-16 border-b border-white/10">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-2.5 h-2.5 bg-[#c7a12b]"></span>
+          <span class="text-xs font-mono tracking-[0.25em] text-[#c7a12b] uppercase font-bold">
+            COMPROMISO DYNASTY WORKSHOP
+          </span>
+        </div>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight font-sans leading-[1.02]">
+          EL MEJOR SERVICIO <span class="text-[#c7a12b]">DEL PAÍS</span> PARA TU VEHÍCULO.
+        </h2>
+      </div>
+
+      <div class="max-w-md">
+        <p class="text-sm md:text-base text-neutral-400 font-medium leading-relaxed mb-4">
+          En Dynasty Workshop unimos pasión automotriz, tecnología de concesionario y repuestos certificados para garantizar que cada auto alcance su máximo desempeño y durabilidad.
+        </p>
+        <div class="flex items-center gap-2 text-xs font-mono text-[#c7a12b] font-semibold">
+          <CheckCircle2 className="w-4 h-4" />
+          <span>GARANTÍA TOTAL EN PIEZAS & MANO DE OBRA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The 3 Vehicle Lineages (Japanese, American, European) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16">
+      <!-- Japanese Lineage -->
+      <div class="card-squared relative p-8 bg-[#131316] border border-white/10 hover:border-[#c7a12b] transition-all duration-300 group">
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-[11px] font-mono tracking-widest text-[#c7a12b] font-bold uppercase">
+            01 // LINAJE JAPONÉS
+          </span>
+          <span class="text-xs font-mono text-neutral-500 font-bold">TOYOTA • HONDA • LEXUS</span>
+        </div>
+
+        <h3 class="text-2xl font-black text-white uppercase mb-3 group-hover:text-[#c7a12b] transition-colors">
+          CONFIABILIDAD INDESTRUCTIBLE
+        </h3>
+
+        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-medium">
+          Mantenimiento de precisión con repuestos genuinos y especificaciones OEM japonesas. Aseguramos tolerancias milimétricas en tren delantero, frenos y filtración para que tu motor rinda cientos de miles de kilómetros.
+        </p>
+
+        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs font-mono text-neutral-300">
+          <span class="text-[#c7a12b]">La mejor pieza:</span>
+          <span>Filtros & Kit de Cadena OE</span>
+        </div>
+      </div>
+
+      <!-- American Lineage -->
+      <div class="card-squared relative p-8 bg-[#131316] border border-white/10 hover:border-[#c7a12b] transition-all duration-300 group">
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-[11px] font-mono tracking-widest text-[#c7a12b] font-bold uppercase">
+            02 // LINAJE AMERICANO
+          </span>
+          <span class="text-xs font-mono text-neutral-500 font-bold">FORD • LINCOLN • CHEVROLET</span>
+        </div>
+
+        <h3 class="text-2xl font-black text-white uppercase mb-3 group-hover:text-[#c7a12b] transition-colors">
+          PODER, TORQUE & RESISTENCIA
+        </h3>
+
+        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-medium">
+          Especialistas en tren motriz de servicio pesado, turbos EcoBoost y motores V8. Diagnóstico de transmisiones automáticas de 10 velocidades y componentes de suspensión reforzados para caminos exigentes.
+        </p>
+
+        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs font-mono text-neutral-300">
+          <span class="text-[#c7a12b]">La mejor pieza:</span>
+          <span>Amortiguadores Monotubo & Tren Motriz</span>
+        </div>
+      </div>
+
+      <!-- European Lineage -->
+      <div class="card-squared relative p-8 bg-[#131316] border border-[#c7a12b]/30 hover:border-[#c7a12b] transition-all duration-300 group bg-gradient-to-b from-[#18181c] to-[#121215]">
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-[11px] font-mono tracking-widest text-[#c7a12b] font-bold uppercase">
+            03 // LINAJE EUROPEO
+          </span>
+          <span class="text-xs font-mono text-neutral-500 font-bold">BMW • MERCEDES • AUDI • PORSCHE</span>
+        </div>
+
+        <h3 class="text-2xl font-black text-white uppercase mb-3 group-hover:text-[#c7a12b] transition-colors">
+          INGENIERÍA SIN CONCESIONES
+        </h3>
+
+        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-medium">
+          Diagnóstico computarizado avanzado ISTA/ODIS, sensores alemanes y piezas directas de proveedores OE (Brembo, MANN-FILTER, Lemförder, INA). Cuidamos la electrónica de alta gama y sistemas M / AMG.
+        </p>
+
+        <div class="border-t border-white/10 pt-4 flex items-center justify-between text-xs font-mono text-neutral-300">
+          <span class="text-[#c7a12b]">La mejor pieza:</span>
+          <span>Frenos M-Sport & Termostatos Inteligentes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Stats Bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 pt-12 border-t border-white/10">
+      <div class="flex flex-col">
+        <span class="text-3xl md:text-4xl font-black text-white font-mono tracking-tight">+15 AÑOS</span>
+        <span class="text-xs text-neutral-400 font-mono mt-1 tracking-wider uppercase">EXPERIENCIA AUTOMOTRIZ</span>
+      </div>
+
+      <div class="flex flex-col">
+        <span class="text-3xl md:text-4xl font-black text-[#c7a12b] font-mono tracking-tight">100%</span>
+        <span class="text-xs text-neutral-400 font-mono mt-1 tracking-wider uppercase">PIEZAS GARANTIZADAS</span>
+      </div>
+
+      <div class="flex flex-col">
+        <span class="text-3xl md:text-4xl font-black text-white font-mono tracking-tight">SCANNER OEM</span>
+        <span class="text-xs text-neutral-400 font-mono mt-1 tracking-wider uppercase">NIVEL CONCESIONARIO</span>
+      </div>
+
+      <div class="flex flex-col">
+        <span class="text-3xl md:text-4xl font-black text-[#c7a12b] font-mono tracking-tight">ENVÍOS RD</span>
+        <span class="text-xs text-neutral-400 font-mono mt-1 tracking-wider uppercase">TODO EL TERRITORIO NACIONAL</span>
+      </div>
+    </div>
+  </div>
+</section>
