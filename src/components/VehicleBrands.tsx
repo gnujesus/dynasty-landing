@@ -137,12 +137,15 @@ export default function VehicleBrands() {
           </span>
         </div>
 
-        <nav className="flex items-center gap-6 md:gap-10 font-mono text-[11px] tracking-widest uppercase">
+        <nav className="flex items-center gap-5 md:gap-8 font-mono text-[11px] tracking-widest uppercase">
           <a href="#nosotros" className="text-white/60 hover:text-white transition-colors">
             NOSOTROS
           </a>
           <a href="#servicios" className="text-white/60 hover:text-white transition-colors">
             SERVICIOS
+          </a>
+          <a href="#asesoria" className="text-white/60 hover:text-[#c7a12b] transition-colors">
+            ASESORÍA
           </a>
           <a href="/catalog" className="text-[#c7a12b] hover:text-[#dfb93e] font-bold transition-colors">
             CATÁLOGO

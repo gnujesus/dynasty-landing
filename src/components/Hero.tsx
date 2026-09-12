@@ -64,7 +64,7 @@ export default function Hero() {
       <div className="absolute top-6 left-6 md:left-12 z-20 flex items-center gap-3">
         <span className="inline-block w-2.5 h-2.5 bg-[#c7a12b] animate-pulse" />
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#c7a12b] uppercase font-bold">
-          DYNASTY WORKSHOP // HIGH PERFORMANCE
+          DYNASTY WORKSHOP // ALTO DESEMPEÑO & ASESORÍA
         </span>
       </div>
 
@@ -136,7 +136,7 @@ export default function Hero() {
                     <div className="inline-flex items-center gap-2 mb-2">
                       <span className="h-[1px] w-5 bg-[#c7a12b]" />
                       <span className="text-[10px] md:text-[11px] font-mono uppercase tracking-[0.25em] text-[#c7a12b] font-semibold">
-                        PRECISIÓN & MECÁNICA AVANZADA
+                        PRECISIÓN, REPUESTOS & ASESORÍA AUTOMOTRIZ
                       </span>
                     </div>
 
@@ -146,7 +146,7 @@ export default function Hero() {
 
                     {/* Short & Catchy Slogan */}
                     <p className="text-xs sm:text-sm md:text-base text-neutral-300 font-medium leading-relaxed mb-4 md:mb-6 max-w-md">
-                      Ingeniería de precisión. Reparaciones especializadas y repuestos certificados para tu vehículo.
+                      Ingeniería de precisión, reparaciones especializadas, repuestos certificados y asesoría técnica para la venta de vehículos.
                     </p>
 
                     {/* Squared Action Buttons */}
@@ -160,7 +160,7 @@ export default function Hero() {
                       </a>
 
                       <a
-                        href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20y%20repuestos."
+                        href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios,%20repuestos%20y%20asesor%C3%ADa%20de%20veh%C3%ADculos."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-squared hidden sm:inline-flex items-center justify-center gap-2 px-5 py-3 border border-white/20 hover:border-[#c7a12b] text-white hover:text-[#c7a12b] bg-black/60 backdrop-blur-md font-bold text-xs tracking-widest uppercase transition-all duration-200"
