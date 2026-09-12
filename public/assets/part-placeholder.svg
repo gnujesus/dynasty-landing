@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <rect width="200" height="200" rx="24" fill="#18181b"/>
+  <circle cx="100" cy="100" r="48" fill="none" stroke="#c7a12b" stroke-width="4" stroke-dasharray="6 4" opacity="0.4"/>
+  <!-- Gear / Auto Part Outline -->
+  <path d="M100 68a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm0 48a16 16 0 1 1 16-16 16 16 0 0 1-16 16z" fill="#c7a12b" opacity="0.85"/>
+  <path d="M96 52h8v12h-8zM96 136h8v12h-8zM52 96h12v8H52zM136 96h12v8h-12zM66 66l8 8-6 6-8-8zM126 126l8 8-6 6-8-8zM134 66l-8 8-6-6 8-8zM74 126l-8 8-6-6 8-8z" fill="#c7a12b" opacity="0.7"/>
+  <text x="100" y="174" text-anchor="middle" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="1">DYNASTY AUTO PARTS</text>
+</svg>

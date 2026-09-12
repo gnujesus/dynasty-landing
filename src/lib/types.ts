@@ -42,6 +42,8 @@ export interface Part {
   cost?: number;
   warrantyMonths?: number;
   notes?: string;
+  imageUrl?: string;
+  image_url?: string;
   active: boolean;
   fitments: Fitment[];
   references?: PartReference[];

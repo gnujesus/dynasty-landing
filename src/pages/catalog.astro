@@ -96,7 +96,7 @@ const initialMake = url.searchParams.get("make") || "";
       </div>
 
       <!-- Live Interactive Catalog Table Component -->
-      <CatalogTable client:load initialParts={parts} initialMake={initialMake} />
+      <CatalogTable client:only="react" initialParts={parts} initialMake={initialMake} />
     </div>
   </main>
 

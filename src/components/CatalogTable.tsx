@@ -7,8 +7,11 @@ interface CatalogTableProps {
   initialMake?: string;
 }
 
+const DEFAULT_PART_IMAGE = "/assets/dynasty-logo.png";
+
 export default function CatalogTable({ initialParts, initialMake = "" }: CatalogTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [previewPart, setPreviewPart] = useState<Part | null>(null);
   const [selectedMake, setSelectedMake] = useState<string>(() => {
     if (initialMake && initialMake.trim()) return initialMake.trim().toUpperCase();
     if (typeof window !== "undefined") {
@@ -19,6 +22,15 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
   });
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  // Handle ESC key to close image preview modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPreviewPart(null);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Keep selectedMake in sync with window.location.search on client
   useEffect(() => {
@@ -319,25 +331,45 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
                     key={part.id}
                     className="hover:bg-[#18181d] transition-colors group"
                   >
-                    {/* Part Name & Quality */}
+                    {/* Part Image, Name & Quality */}
                     <td className="py-4 px-5">
-                      <div className="font-bold text-white text-sm group-hover:text-[#c7a12b] transition-colors">
-                        {part.name}
-                      </div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[11px] text-neutral-400 font-semibold font-mono">
-                          {part.brand || "Dynasty Autoparts"}
-                        </span>
-                        {part.quality && (
-                          <span className="px-1.5 py-0.5 text-[9px] font-mono tracking-wider bg-[#c7a12b]/15 text-[#c7a12b] border border-[#c7a12b]/30">
-                            {part.quality}
-                          </span>
-                        )}
-                        {part.category && (
-                          <span className="text-[10px] text-neutral-500">
-                            • {part.category}
-                          </span>
-                        )}
+                      <div className="flex items-center gap-3.5">
+                        <button
+                          type="button"
+                          onClick={() => setPreviewPart(part)}
+                          className="relative w-12 h-12 rounded-lg bg-[#141417] border border-white/10 hover:border-[#c7a12b] p-1 flex items-center justify-center shrink-0 overflow-hidden transition-all group/img cursor-pointer"
+                          title="Click para ver imagen de la pieza"
+                        >
+                          <img
+                            src={part.imageUrl || part.image_url || DEFAULT_PART_IMAGE}
+                            alt={part.name}
+                            className="w-full h-full object-contain transition-transform duration-200 group-hover/img:scale-105"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = DEFAULT_PART_IMAGE;
+                            }}
+                            loading="lazy"
+                          />
+                        </button>
+                        <div className="min-w-0">
+                          <div className="font-bold text-white text-sm group-hover:text-[#c7a12b] transition-colors">
+                            {part.name}
+                          </div>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-[11px] text-neutral-400 font-semibold font-mono">
+                              {part.brand || "Dynasty Autoparts"}
+                            </span>
+                            {part.quality && (
+                              <span className="px-1.5 py-0.5 text-[9px] font-mono tracking-wider bg-[#c7a12b]/15 text-[#c7a12b] border border-[#c7a12b]/30">
+                                {part.quality}
+                              </span>
+                            )}
+                            {part.category && (
+                              <span className="text-[10px] text-neutral-500">
+                                • {part.category}
+                              </span>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </td>
 
@@ -483,13 +515,33 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white mb-1">
-                    {part.name}
-                  </h3>
+                  <div className="flex items-start gap-3.5 mb-3">
+                    <button
+                      type="button"
+                      onClick={() => setPreviewPart(part)}
+                      className="w-16 h-16 rounded-lg bg-[#18181d] border border-white/10 hover:border-[#c7a12b] p-1 flex items-center justify-center shrink-0 overflow-hidden cursor-pointer transition-colors"
+                      title="Click para ver imagen de la pieza"
+                    >
+                      <img
+                        src={part.imageUrl || part.image_url || DEFAULT_PART_IMAGE}
+                        alt={part.name}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = DEFAULT_PART_IMAGE;
+                        }}
+                        loading="lazy"
+                      />
+                    </button>
 
-                  <div className="text-xs font-mono text-neutral-400 mb-3">
-                    {part.brand} • SKU: <span className="text-white">{part.sku}</span>
-                    {part.oeNumber && <span> • OE: {part.oeNumber}</span>}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-base font-bold text-white mb-1 leading-snug">
+                        {part.name}
+                      </h3>
+                      <div className="text-xs font-mono text-neutral-400">
+                        {part.brand} • SKU: <span className="text-white">{part.sku}</span>
+                        {part.oeNumber && <span> • OE: {part.oeNumber}</span>}
+                      </div>
+                    </div>
                   </div>
 
                   {part.fitments && part.fitments.length > 0 && (
@@ -540,6 +592,89 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
           </div>
         )}
       </div>
+
+      {/* Image Preview Lightbox Modal */}
+      {previewPart && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          onClick={() => setPreviewPart(null)}
+        >
+          <div
+            className="relative w-full max-w-lg bg-[#121215] border border-[#c7a12b]/40 card-squared p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setPreviewPart(null)}
+              className="absolute top-4 right-4 text-neutral-400 hover:text-white p-1.5 border border-white/10 hover:border-white/30 rounded bg-[#18181c] transition-colors cursor-pointer"
+              aria-label="Cerrar vista previa"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="mb-4 pr-10">
+              <div className="inline-flex items-center gap-2 mb-1.5">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#c7a12b] font-bold">
+                  {previewPart.brand || "Dynasty Autoparts"}
+                </span>
+                {previewPart.quality && (
+                  <span className="px-1.5 py-0.5 text-[9px] font-mono tracking-wider bg-[#c7a12b]/15 text-[#c7a12b] border border-[#c7a12b]/30">
+                    {previewPart.quality}
+                  </span>
+                )}
+              </div>
+              <h3 className="text-lg font-bold text-white leading-snug">
+                {previewPart.name}
+              </h3>
+            </div>
+
+            <div className="w-full h-64 sm:h-72 rounded-xl bg-[#0a0a0c] border border-white/10 p-4 flex items-center justify-center overflow-hidden mb-4">
+              <img
+                src={previewPart.imageUrl || previewPart.image_url || DEFAULT_PART_IMAGE}
+                alt={previewPart.name}
+                className="max-w-full max-h-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = DEFAULT_PART_IMAGE;
+                }}
+              />
+            </div>
+
+            <div className="space-y-3 font-mono text-xs">
+              <div className="grid grid-cols-2 gap-2 bg-[#18181d] p-3 border border-white/5 text-neutral-300">
+                <div>
+                  <span className="text-neutral-500 block text-[10px]">SKU:</span>
+                  <span className="text-white font-bold">{previewPart.sku}</span>
+                </div>
+                {previewPart.oeNumber && (
+                  <div>
+                    <span className="text-neutral-500 block text-[10px]">OE NUMBER:</span>
+                    <span className="text-[#c7a12b] font-bold">{previewPart.oeNumber}</span>
+                  </div>
+                )}
+                <div>
+                  <span className="text-neutral-500 block text-[10px]">DISPONIBILIDAD:</span>
+                  <span className={previewPart.onHand > 0 ? "text-emerald-400 font-bold" : "text-amber-400 font-bold"}>
+                    {previewPart.onHand > 0 ? `EN STOCK (${previewPart.onHand})` : "BAJO PEDIDO"}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 block text-[10px]">PRECIO:</span>
+                  <span className="text-white font-bold">RD$ {previewPart.price.toLocaleString()}</span>
+                </div>
+              </div>
+
+              <a
+                href={`https://wa.me/18294627157?text=${encodeURIComponent(`¡Hola Dynasty Workshop! Me interesa la pieza: ${previewPart.name} (SKU: ${previewPart.sku}, OE: ${previewPart.oeNumber || "N/A"}). Precio: RD$ ${previewPart.price.toLocaleString()}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-squared w-full inline-flex items-center justify-center gap-2 py-3 bg-[#c7a12b] hover:bg-[#dfb93e] text-black font-extrabold text-xs tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(199,161,43,0.3)] cursor-pointer"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>ORDENAR POR WHATSAPP</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

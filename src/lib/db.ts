@@ -4,22 +4,15 @@ import type { Part } from './types';
 
 dotenv.config();
 
-const { Pool } = pg;
+const { Client } = pg;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.caknbpusgwwlwhaukbdb:D7nas7yp4ssw04dde2cv1n5085567@aws-0-us-west-2.pooler.supabase.com:5432/postgres';
+export const DEFAULT_PART_IMAGE = '/assets/dynasty-logo.png';
 
-let pool: pg.Pool | null = null;
-
-function getPool(): pg.Pool {
-  if (!pool) {
-    pool = new Pool({
-      connectionString,
-      ssl: connectionString.includes('supabase.com') ? { rejectUnauthorized: false } : undefined,
-      max: 10,
-      idleTimeoutMillis: 30000,
-    });
+function getDatabaseUrl(): string {
+  if (typeof process !== 'undefined' && process.env?.DATABASE_URL) {
+    return process.env.DATABASE_URL;
   }
-  return pool;
+  return 'postgresql://postgres.caknbpusgwwlwhaukbdb:D7nas7yp4ssw04dde2cv1n5085567@aws-0-us-west-2.pooler.supabase.com:5432/postgres';
 }
 
 const fallbackParts: Part[] = [
@@ -390,13 +383,20 @@ const fallbackParts: Part[] = [
 ];
 
 export async function getAllParts(): Promise<Part[]> {
+  let client: pg.Client | null = null;
   try {
-    const client = getPool();
+    const conn = getDatabaseUrl();
+    client = new Client({
+      connectionString: conn,
+      ssl: conn.includes('supabase.com') ? { rejectUnauthorized: false } : undefined,
+      connectionTimeoutMillis: 5000,
+    });
+    await client.connect();
     const query = `
       SELECT p.id, p.name, p.sku, p.barcode, p.part_type as "partType", p.category, p.brand,
              p.quality, p.oe_number as "oeNumber", p.manufacturer_number as "manufacturerNumber",
              p.axle, p.side, p.position, p.warehouse, p.on_hand as "onHand", p.price::float as price,
-             p.notes, p.active,
+             p.notes, p.image_url as "imageUrl", p.image_url as "image_url", p.active,
              coalesce(
                json_agg(
                  json_build_object(
@@ -422,6 +422,8 @@ export async function getAllParts(): Promise<Part[]> {
       ...row,
       price: Number(row.price || 0),
       onHand: Number(row.onHand || 0),
+      imageUrl: (row.imageUrl || row.image_url || '').trim() || DEFAULT_PART_IMAGE,
+      image_url: (row.imageUrl || row.image_url || '').trim() || DEFAULT_PART_IMAGE,
       fitments: Array.isArray(row.fitments) ? row.fitments : []
     }));
 
@@ -440,14 +442,29 @@ export async function getAllParts(): Promise<Part[]> {
 
     // Combine dbParts with enriched high-demand catalog items so users have both
     // real Supabase parts and an extensive catalog ready to buy.
+    const normalizedFallbacks = fallbackParts.map(fp => ({
+      ...fp,
+      imageUrl: fp.imageUrl || fp.image_url || DEFAULT_PART_IMAGE,
+      image_url: fp.imageUrl || fp.image_url || DEFAULT_PART_IMAGE,
+    }));
     const existingSkus = new Set(dbParts.map((p: any) => (p.sku || '').toLowerCase()));
     const enriched = [
       ...dbParts,
-      ...fallbackParts.filter(fp => !existingSkus.has(fp.sku.toLowerCase()))
+      ...normalizedFallbacks.filter(fp => !existingSkus.has(fp.sku.toLowerCase()))
     ];
     return enriched;
   } catch (err) {
     console.error('Database connection error in getAllParts, using fallback catalog:', err);
-    return fallbackParts;
+    return fallbackParts.map(fp => ({
+      ...fp,
+      imageUrl: fp.imageUrl || fp.image_url || DEFAULT_PART_IMAGE,
+      image_url: fp.imageUrl || fp.image_url || DEFAULT_PART_IMAGE,
+    }));
+  } finally {
+    if (client) {
+      try {
+        await client.end();
+      } catch {}
+    }
   }
 }

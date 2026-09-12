@@ -27,14 +27,14 @@ const igImages = getInstagramImages();
 
   <main class="w-full bg-[#0a0a0c] overflow-hidden pt-[102px]">
     <!-- Section 1: Cinematic 16:9 Hero with 4-second animated logo reveal and text split -->
-    <Hero client:load />
+    <Hero client:only="react" />
 
     <!-- Section 2: Interactive Brands Section (Replicating User Image in Company Colors) -->
-    <VehicleBrands client:visible />
+    <VehicleBrands client:only="react" />
 
     <!-- Section 3: Instagram / Proyectos 3D Carousel (Réplica exacta de imagen con scroll de mouse) -->
     {igImages.length > 0 && (
-      <InstagramShowcase client:visible images={igImages} />
+      <InstagramShowcase client:only="react" images={igImages} />
     )}
 
     <!-- Section 4: About Us (Compromiso de la Empresa: Japoneses, Americanos, Europeos) -->
@@ -85,13 +85,24 @@ const igImages = getInstagramImages();
                   </span>
                 </div>
 
-                <h3 class="text-sm font-bold text-white group-hover:text-[#c7a12b] transition-colors mb-1 line-clamp-2">
-                  {part.name}
-                </h3>
-
-                <div class="text-[11px] font-mono text-neutral-400 mb-3">
-                  SKU: <span class="text-white">{part.sku}</span>
-                  {part.brand && <span> • {part.brand}</span>}
+                <div class="flex items-start gap-3 my-2">
+                  <div class="w-12 h-12 rounded-lg bg-[#0c0c0e] border border-white/10 p-1 flex items-center justify-center shrink-0 overflow-hidden">
+                    <img
+                      src={part.imageUrl || part.image_url || "/assets/dynasty-logo.png"}
+                      alt={part.name}
+                      class="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-sm font-bold text-white group-hover:text-[#c7a12b] transition-colors mb-1 line-clamp-2">
+                      {part.name}
+                    </h3>
+                    <div class="text-[11px] font-mono text-neutral-400">
+                      SKU: <span class="text-white">{part.sku}</span>
+                      {part.brand && <span> • {part.brand}</span>}
+                    </div>
+                  </div>
                 </div>
               </div>
 
