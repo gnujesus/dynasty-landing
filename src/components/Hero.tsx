@@ -160,7 +160,7 @@ export default function Hero() {
                       </a>
 
                       <a
-                        href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios,%20repuestos%20y%20asesor%C3%ADa%20de%20veh%C3%ADculos."
+                        href="https://wa.me/18298126993?text=Hola%20Dynasty%20Workshop,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios,%20repuestos%20y%20asesor%C3%ADa%20de%20veh%C3%ADculos."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-squared hidden sm:inline-flex items-center justify-center gap-2 px-5 py-3 border border-white/20 hover:border-[#c7a12b] text-white hover:text-[#c7a12b] bg-black/60 backdrop-blur-md font-bold text-xs tracking-widest uppercase transition-all duration-200"

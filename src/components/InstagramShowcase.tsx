@@ -226,7 +226,7 @@ export default function InstagramShowcase({ images }: InstagramShowcaseProps) {
 
                     {/* Action Link: Cotizar Proyecto */}
                     <a
-                      href={`https://wa.me/18294627157?text=${encodeURIComponent(waMsg)}`}
+                      href={`https://wa.me/18298126993?text=${encodeURIComponent(waMsg)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}

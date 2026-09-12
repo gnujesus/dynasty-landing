@@ -161,7 +161,7 @@ export default function VehicleBrands() {
         {/* Left Social & Contact Rail (Exact replica of reference image) */}
         <aside className="col-span-1 hidden lg:flex flex-col items-center justify-center gap-7 text-white/40">
           <a
-            href="https://wa.me/18294627157"
+            href="https://wa.me/18298126993"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 hover:text-[#c7a12b] hover:scale-110 transition-all"
@@ -197,14 +197,14 @@ export default function VehicleBrands() {
             <YouTubeIcon className="w-4 h-4" />
           </a>
           <a
-            href="mailto:admin@dynasty.do"
+            href="mailto:dynastyrm18@gmail.com"
             className="p-2 hover:text-[#c7a12b] hover:scale-110 transition-all"
             title="Email"
           >
             <Mail className="w-4 h-4" />
           </a>
           <a
-            href="tel:+18294627157"
+            href="tel:+18298126993"
             className="p-2 hover:text-[#c7a12b] hover:scale-110 transition-all"
             title="Llamar"
           >

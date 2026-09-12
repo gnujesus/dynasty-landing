@@ -324,7 +324,7 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
             {filteredParts.length > 0 ? (
               filteredParts.map(part => {
                 const waMessage = `¡Hola Dynasty Workshop! Deseo ordenar la siguiente pieza del catálogo: ${part.name} (SKU: ${part.sku}, OE: ${part.oeNumber || "N/A"}). Precio: RD$ ${part.price.toLocaleString()}. ¿Tienen disponibilidad inmediata?`;
-                const waLink = `https://wa.me/18294627157?text=${encodeURIComponent(waMessage)}`;
+                const waLink = `https://wa.me/18298126993?text=${encodeURIComponent(waMessage)}`;
 
                 return (
                   <tr
@@ -477,7 +477,7 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
                       Podemos conseguir cualquier pieza para tu vehículo directamente de fábrica.
                     </p>
                     <a
-                      href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20busco%20una%20pieza%20que%20no%20encontr%C3%A9%20en%20el%20cat%C3%A1logo.%20%C2%BFMe%20pueden%20ayudar?"
+                      href="https://wa.me/18298126993?text=Hola%20Dynasty%20Workshop,%20busco%20una%20pieza%20que%20no%20encontr%C3%A9%20en%20el%20cat%C3%A1logo.%20%C2%BFMe%20pueden%20ayudar?"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-squared inline-flex items-center gap-2 px-5 py-2.5 bg-[#18181c] border border-[#c7a12b] text-[#c7a12b] hover:bg-[#c7a12b] hover:text-black font-bold text-xs tracking-wider uppercase transition-colors"
@@ -498,7 +498,7 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
         {filteredParts.length > 0 ? (
           filteredParts.map(part => {
             const waMessage = `¡Hola Dynasty Workshop! Deseo ordenar la siguiente pieza del catálogo: ${part.name} (SKU: ${part.sku}, OE: ${part.oeNumber || "N/A"}). Precio: RD$ ${part.price.toLocaleString()}. ¿Tienen disponibilidad inmediata?`;
-            const waLink = `https://wa.me/18294627157?text=${encodeURIComponent(waMessage)}`;
+            const waLink = `https://wa.me/18298126993?text=${encodeURIComponent(waMessage)}`;
 
             return (
               <div
@@ -582,7 +582,7 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
             <p className="text-sm font-semibold text-white mb-2">No se encontraron piezas</p>
             <p className="text-xs text-neutral-500 mb-4">Pregúntanos por WhatsApp para asistirte de inmediato.</p>
             <a
-              href="https://wa.me/18294627157?text=Hola%20Dynasty%20Workshop,%20busco%20una%20pieza%20para%20mi%20auto."
+              href="https://wa.me/18298126993?text=Hola%20Dynasty%20Workshop,%20busco%20una%20pieza%20para%20mi%20auto."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-squared inline-flex items-center gap-2 px-4 py-2 bg-[#c7a12b] text-black font-bold text-xs"
@@ -663,7 +663,7 @@ export default function CatalogTable({ initialParts, initialMake = "" }: Catalog
               </div>
 
               <a
-                href={`https://wa.me/18294627157?text=${encodeURIComponent(`¡Hola Dynasty Workshop! Me interesa la pieza: ${previewPart.name} (SKU: ${previewPart.sku}, OE: ${previewPart.oeNumber || "N/A"}). Precio: RD$ ${previewPart.price.toLocaleString()}.`)}`}
+                href={`https://wa.me/18298126993?text=${encodeURIComponent(`¡Hola Dynasty Workshop! Me interesa la pieza: ${previewPart.name} (SKU: ${previewPart.sku}, OE: ${previewPart.oeNumber || "N/A"}). Precio: RD$ ${previewPart.price.toLocaleString()}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-squared w-full inline-flex items-center justify-center gap-2 py-3 bg-[#c7a12b] hover:bg-[#dfb93e] text-black font-extrabold text-xs tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(199,161,43,0.3)] cursor-pointer"
